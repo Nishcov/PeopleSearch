@@ -1,0 +1,50 @@
+﻿@model PeopleSearch.Models.Person
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add a New Person</h2>
+<br />
+
+@{ 
+    List<string> states = new List<string> { "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
+                                             "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",
+                                             "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
+                                             "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
+                                             "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY" };
+}
+
+@using (Html.BeginForm("Add", "Customers"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.FirstName)
+        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.LastName)
+        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Age)
+        @Html.TextBoxFor(m => m.Age, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Address)
+        @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.City)
+        @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.State)
+        @Html.DropDownListFor(m => m.FirstName, new SelectList(states), "Select State", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Zip)
+        @Html.TextBoxFor(m => m.Zip, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+

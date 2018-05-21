@@ -176,10 +176,21 @@
     <Compile Include="Migrations\201805201849067_InitialModel.Designer.cs">
       <DependentUpon>201805201849067_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805202215434_SeedPeopleDatabase.cs" />
+    <Compile Include="Migrations\201805202215434_SeedPeopleDatabase.Designer.cs">
+      <DependentUpon>201805202215434_SeedPeopleDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805210011020_AddedAnnotationsToCustomerClass.cs" />
+    <Compile Include="Migrations\201805210011020_AddedAnnotationsToCustomerClass.Designer.cs">
+      <DependentUpon>201805210011020_AddedAnnotationsToCustomerClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805210128338_ReseedPeopleDatabase.cs" />
+    <Compile Include="Migrations\201805210128338_ReseedPeopleDatabase.Designer.cs">
+      <DependentUpon>201805210128338_ReseedPeopleDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\PeopleDbContext.cs" />
     <Compile Include="Models\Person.cs" />
-    <Compile Include="Models\PeopleSeeder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -221,7 +232,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\People\Random.cshtml" />
+    <Content Include="Views\People\Index.cshtml" />
+    <Content Include="Views\People\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -242,6 +254,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805201849067_InitialModel.resx">
       <DependentUpon>201805201849067_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805202215434_SeedPeopleDatabase.resx">
+      <DependentUpon>201805202215434_SeedPeopleDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805210011020_AddedAnnotationsToCustomerClass.resx">
+      <DependentUpon>201805210011020_AddedAnnotationsToCustomerClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805210128338_ReseedPeopleDatabase.resx">
+      <DependentUpon>201805210128338_ReseedPeopleDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

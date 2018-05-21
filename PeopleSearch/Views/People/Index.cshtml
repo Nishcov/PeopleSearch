@@ -1,0 +1,41 @@
+﻿@model IEnumerable<PeopleSearch.Models.Person>
+@{
+    ViewBag.Title = "People";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>People</h2>
+<br />
+
+@if (!Model.Any())
+{
+    <p>There are no people added yet.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Photo</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Address</th>
+                <th>Interests</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (PeopleSearch.Models.Person peep in Model)
+            {
+            <tr>
+                <td>"."</td>
+                <td>@Html.ActionLink(peep.FirstName + " " + peep.LastName, "Details", "People", new { id = peep.Id }, null)</td>
+                <td>@peep.Age</td>
+                <td>@peep.Address</td>
+                <td>@peep.Interests</td>
+
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+
