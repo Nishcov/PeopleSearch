@@ -33,14 +33,17 @@ namespace PeopleSearch.Models
         [StringLength(255)]
         public string State { get; set; }
 
+        [Required]
         public int Zip { get; set; }
 
+        [Required]
+        [Range(1, 125)]
         public int Age { get; set; }
 
         [Required]
         [StringLength(255)]
         public string Interests { get; set; }
 
-        //public System.Drawing.Image Picture { get; set; }
+        public byte[] Picture { get; set; }
     }
 }

@@ -7,44 +7,61 @@
 <h2>Add a New Person</h2>
 <br />
 
-@{ 
-    List<string> states = new List<string> { "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
-                                             "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",
-                                             "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
-                                             "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
-                                             "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY" };
-}
-
-@using (Html.BeginForm("Add", "Customers"))
+@using (Html.BeginForm("Add", "People"))
 {
+    @Html.ValidationSummary(true, "Please fix the errors below:")
     <div class="form-group">
         @Html.LabelFor(m => m.FirstName)
         @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.FirstName)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.LastName)
         @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Age)
-        @Html.TextBoxFor(m => m.Age, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.LastName)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Address)
         @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Address)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.City)
         @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.City)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.State)
-        @Html.DropDownListFor(m => m.FirstName, new SelectList(states), "Select State", new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.State, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.State)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Zip)
         @Html.TextBoxFor(m => m.Zip, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Zip)
     </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Age)
+        @Html.TextBoxFor(m => m.Age, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Age)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Interests)
+        @Html.TextBoxFor(m => m.Interests, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Interests)
+    </div>
+    @*
+        <div>
+            <form action="" method="post" enctype="multipart/form-data">
+                <fieldset>
+                    @Html.LabelFor(m => m.Picture)
+                    <input type="file" name="Image" />
+                    <input type="submit" value="Upload" onclick="Upload" />
+                </fieldset>/
+            </form>
+        </div>
+    *@
+    <br />
     <button type="submit" class="btn btn-primary">Save</button>
 }
 

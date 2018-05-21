@@ -14,9 +14,6 @@ namespace PeopleSearch
     {
         protected void Application_Start()
         {
-            // Init database with seeded People data
-            //System.Data.Entity.Database.SetInitializer(new PeopleSeeder());
-
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

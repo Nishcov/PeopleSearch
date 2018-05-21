@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using System.Net.Http;
+using System.IO;
+using System.Data;
 using System.Data.Entity;
 using System.Threading;
 using System.Threading.Tasks;
@@ -37,6 +39,11 @@ namespace PeopleSearch.Controllers
         [HttpPost]
         public ActionResult Add(Person person)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("New", person);
+            }
+
             context.People.Add(person);
             context.SaveChanges();
 

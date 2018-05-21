@@ -27,12 +27,20 @@ else
             @foreach (PeopleSearch.Models.Person peep in Model)
             {
             <tr>
-                <td>"."</td>
-                <td>@Html.ActionLink(peep.FirstName + " " + peep.LastName, "Details", "People", new { id = peep.Id }, null)</td>
+                @if (peep.Picture == null)
+                {
+                    <td>
+                        <img src="~/Content/default-picture.png" />
+                    </td>
+                }
+                else
+                {
+                    <td>"."</td>
+                }
+                <td>@peep.FirstName @peep.LastName</td>
                 <td>@peep.Age</td>
-                <td>@peep.Address</td>
+                <td>@peep.Address<br />@peep.City, @peep.State @peep.Zip</td>
                 <td>@peep.Interests</td>
-
             </tr>
             }
         </tbody>
