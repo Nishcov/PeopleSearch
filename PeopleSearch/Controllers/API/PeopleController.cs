@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using PeopleSearch.Models;
+using PeopleSearch.DTOs;
+using AutoMapper;
 
 namespace PeopleSearch.Controllers.API
 {
@@ -18,38 +20,43 @@ namespace PeopleSearch.Controllers.API
         }
 
         // GET: /api/people
-        public IEnumerable<Person> GetPeople()
+        public IHttpActionResult GetPeople()
         {
-            return context.People.ToList();
+            var personDTOs = context.People.ToList().Select(Mapper.Map<Person, PersonDTO>);
+
+            return Ok(personDTOs);
         }
 
         // GET: /api/people/#
-        public Person GetPerson(int id)
+        public IHttpActionResult GetPerson(int id)
         {
             Person person = context.People.SingleOrDefault(p => p.Id == id);
 
             if (person == null)
             {
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
             }
 
-            return person;
+            return Ok(Mapper.Map<Person, PersonDTO>(person));
         }
 
         // POST: /api/people
         [HttpPost]
-        public Person AddPerson(Person person)
+        public IHttpActionResult AddPerson(PersonDTO personDTO)
         {
             // Validate first
             if (!ModelState.IsValid)
             {
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
             }
 
+            Person person = Mapper.Map<PersonDTO, Person>(personDTO);
             context.People.Add(person);
             context.SaveChanges();
 
-            return person;
+            personDTO.Id = person.Id;
+
+            return Created(new Uri(Request.RequestUri + "/" + person.Id), personDTO);
         }
     }
 }

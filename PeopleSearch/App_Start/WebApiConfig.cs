@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
 namespace PeopleSearch
@@ -12,8 +13,10 @@ namespace PeopleSearch
         {
             // Web API configuration and services
 
-            // Use JSON with camelCase
-            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            // Use JSON with camelCase (to match JavaScript)
+            JsonSerializerSettings settings = config.Formatters.JsonFormatter.SerializerSettings;
+            settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            settings.Formatting = Formatting.Indented;
 
             // Web API routes
             config.MapHttpAttributeRoutes();
